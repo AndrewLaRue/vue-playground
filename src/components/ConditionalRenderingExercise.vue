@@ -10,7 +10,7 @@
             screen.
           </p>
           <!-- add code to element below -->
-          <div class="player-card text-center">
+          <div class="player-card text-center" v-if="state.player.showPlayer">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -122,39 +122,40 @@
 
 
 <script>
-import { reactive } from "vue";
+  import { reactive } from "vue";
 
-export default {
-  name: "condtional-rendering-exercise",
-  setup() {
-    // NOTE typically state will be abstracted to a global AppState
-    const state = reactive({
-      //add a property to toggle the player-card here.
-      //add a property to set the number value here.
-      player: {
-        photo: "https://robohash.org/Mick",
-        name: "Mick",
-        position: "WR",
-        number: 4,
-      },
-    });
-    return {
-      state,
-    };
-  },
-};
+  export default {
+    name: "conditional-rendering-exercise",
+    setup() {
+      // NOTE typically state will be abstracted to a global AppState
+      const state = reactive({
+        //add a property to toggle the player-card here.
+        //add a property to set the number value here.
+        player: {
+          photo: "https://robohash.org/Mick",
+          name: "Mick",
+          position: "WR",
+          number: 4,
+          showPlayer: false
+        },
+      });
+      return {
+        state,
+      };
+    },
+  };
 </script>
 
 
 <style scoped>
-.player-card {
-  border: 1px solid rgba(154, 154, 156, 0.4);
-  background-color: rgba(154, 154, 156, 0.4);
-  margin: 1rem;
-  border-radius: 5px;
-}
+  .player-card {
+    border: 1px solid rgba(154, 154, 156, 0.4);
+    background-color: rgba(154, 154, 156, 0.4);
+    margin: 1rem;
+    border-radius: 5px;
+  }
 
-.img {
-  height: 10rem;
-}
+  .img {
+    height: 10rem;
+  }
 </style>
